@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const index = () => {
+const Travel = () => {
     return (
         <View>
-            <Text>index</Text>
+            <Text>Travel</Text>
         </View>
     )
 }
 
-export default index
+export default Travel
 
 const styles = StyleSheet.create({})
