@@ -57,7 +57,7 @@ const index = () => {
                             <View className='mt-2'>
                                 <View className='flex-row justify-between'>
                                     {days.map((day) => (
-                                        <View className='w-12 flex items-center justify-center'>
+                                        <View key={day} className='w-12 flex items-center justify-center'>
                                             <Text className='text-gray-200 text-lg font-semibold'> {day} </Text>
                                         </View>
                                     ))}
@@ -66,14 +66,14 @@ const index = () => {
                             <View className='mt-2'>
                                 <View className='flex-row justify-between'>
                                     {daynum.slice(0, 7).map((day, index) => (
-                                        <View className={`flex justify-center items-center w-12 h-12 border border-gray-300 ${index === 3 ? "bg-gray-300" : "bg-transparent"} rounded-full`} >
+                                        <View key={index} className={`flex justify-center items-center w-12 h-12 border border-gray-300 ${index === 3 ? "bg-gray-300" : "bg-transparent"} rounded-full`} >
                                             <Text className={`${index === 3 ? "text-black" : "text-gray-300"} text-lg font-semibold`}> {day} </Text>
                                         </View>
                                     ))}
                                 </View>
                                 <View className='flex-row justify-between mt-3'>
-                                    {daynum.slice(7, 14).map((day) => (
-                                        <View className='flex justify-center items-center w-12 h-12 border border-gray-300 rounded-full'>
+                                    {daynum.slice(7, 14).map((day, index) => (
+                                        <View key={index} className='flex justify-center items-center w-12 h-12 border border-gray-300 rounded-full'>
                                             <Text className='text-gray-300 text-lg font-semibold'> {day} </Text>
                                         </View>
                                     ))}
