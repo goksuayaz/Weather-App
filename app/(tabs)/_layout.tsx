@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StatusBar, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { Tabs } from 'expo-router'
 import { Ionicons } from "@expo/vector-icons";
@@ -11,8 +11,8 @@ interface TabIconProps {
 
 const TabIcon = ({ icon, name, focused }: TabIconProps) => {
     return (
-        <View className='items-center justify-center gap-0 w-20'>
-            <Ionicons name={icon} color={focused ? "white" : "#8f8989"} size={24} />
+        <View className='items-center justify-center gap-2 w-20'>
+            <Ionicons color={focused ? "white" : "#8f8989"} size={24} name={icon} />
             <Text className={focused ? 'text-white font-semibold' : "text-[#8f8989] font-normal"}  > {name} </Text>
         </View>
     )

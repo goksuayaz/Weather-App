@@ -4,9 +4,12 @@ import backgroundImage from '@/assets/weatherapp/sky.jpg'
 import profile from '@/assets/weatherapp/person.jpg'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Ionicons } from '@expo/vector-icons'
-
+import satelitemap from "@/assets/weatherapp/satelitemap.jpg";
 
 const { height: screenHeight } = Dimensions.get("window");
+
+const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const daynum = [18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 1];
 
 const index = () => {
     return (
@@ -44,16 +47,68 @@ const index = () => {
                                 <Text className='text-white text-lg font-semibold'> UV: 7 </Text>
                             </View>
                         </View>
-                        <View className='mt-8'>
-                            <View className='flex-row items-center gap-2'>
+                        <View className='mt-20'>
+                            <View className='flex-row items-center gap-3'>
                                 <Text className='text-white text-2xl font-semibold'> Event Calender </Text>
                                 <View className='bg-blue-500 w-10 h-10 rounded-full flex items-center justify-center'>
                                     <Ionicons name="add" size={20} />
                                 </View>
                             </View>
-                            <View className='mt-1'>
-                                <View>
-                                    <Text className='text-gray-500 text-lg font-semibold'> Sun </Text>
+                            <View className='mt-2'>
+                                <View className='flex-row justify-between'>
+                                    {days.map((day) => (
+                                        <View className='w-12 flex items-center justify-center'>
+                                            <Text className='text-gray-200 text-lg font-semibold'> {day} </Text>
+                                        </View>
+                                    ))}
+                                </View>
+                            </View>
+                            <View className='mt-2'>
+                                <View className='flex-row justify-between'>
+                                    {daynum.slice(0, 7).map((day, index) => (
+                                        <View className={`flex justify-center items-center w-12 h-12 border border-gray-300 ${index === 3 ? "bg-gray-300" : "bg-transparent"} rounded-full`} >
+                                            <Text className={`${index === 3 ? "text-black" : "text-gray-300"} text-lg font-semibold`}> {day} </Text>
+                                        </View>
+                                    ))}
+                                </View>
+                                <View className='flex-row justify-between mt-3'>
+                                    {daynum.slice(7, 14).map((day) => (
+                                        <View className='flex justify-center items-center w-12 h-12 border border-gray-300 rounded-full'>
+                                            <Text className='text-gray-300 text-lg font-semibold'> {day} </Text>
+                                        </View>
+                                    ))}
+                                </View>
+                            </View>
+                        </View>
+                        <View className='flex-row h-72 mt-16 flex gap-3 items-center'>
+                            <View className='w-1/2 h-full rounded-lg'>
+                                <Image source={satelitemap} className='w-full h-full rounded-lg' />
+                                <View className='absolute bg-black/50 top-4 left-2'>
+                                    <Text className='text-white'> Location </Text>
+                                </View>
+                            </View>
+                            <View className='w-1/2 h-full rounded-lg flex flex-col gap-3'>
+                                <View className='bg-gray-900 h-32 rounded-lg p-2 '>
+                                    <View className='flex-row justify-between'>
+                                        <Text className='text-[52px] text-white font-bol'> 16 </Text>
+                                        <View className='w-12 h-12 bg-yellow-500 flex items-center justify-center rounded-full'>
+                                            <Ionicons name="resize" size={20} color={"black"} />
+                                        </View>
+                                    </View>
+                                    <Text className='text-sm text-gray-200 mt-4'>
+                                        Top beautiful trails nearby
+                                    </Text>
+                                </View>
+                                <View className='bg-gray-900 h-32 rounded-lg p-2 '>
+                                    <View className='flex-row justify-between'>
+                                        <Text className='text-[52px] text-white font-bold'> 5 </Text>
+                                        <View className='w-12 h-12 bg-yellow-500 flex items-center justify-center rounded-full'>
+                                            <Ionicons name="resize" size={20} color={"black"} />
+                                        </View>
+                                    </View>
+                                    <Text className='text-sm text-gray-200'>
+                                        Personalized activity recommendations
+                                    </Text>
                                 </View>
                             </View>
                         </View>
@@ -61,6 +116,7 @@ const index = () => {
                 </SafeAreaView>
             </ImageBackground>
         </View>
+
     )
 }
 
